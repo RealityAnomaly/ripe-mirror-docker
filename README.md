@@ -9,7 +9,9 @@ docker build -t ripe-mirror .
 docker-compose up -d
 ```
 
-By default, the WHOIS server runs on 127.0.0.8 on port 1043, and the HTTP API on port 1080.
+By default, the WHOIS server runs on `127.0.0.8` on port `1043`, and the HTTP API on port `1080`. You can modify the server config by editing whois.properties (this will require a container restart to take effect.)
+
+Two volumes are created - `mariadb_data` to hold the database, and `mirror_data` to hold GRS imports, exports, and miscellaneous logfiles.
 
 The database import will run at midnight, if you want to run it immediately you can do:
 ```
