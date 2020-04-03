@@ -21,7 +21,7 @@ if [ ! -f /app/var/.migrated ]; then
 fi
 
 JMXPORT="1099"
-MEM="-Xms1024m -Xmx8g"
+MEM="-Xms8G -Xmx16G"
 JAVA_OPT="-XX:-HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/export/tmp -XX:MaxPermSize=128m -XX:ErrorFile=var/hs_err_pid%p.log -Djsse.enableSNIExtension=false"
 GC_LOG="-XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintHeapAtGC -Xloggc:var/gc.log"
 JMX="-Dcom.sun.management.jmxremote -Dhazelcast.jmx=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=${JMXPORT}"

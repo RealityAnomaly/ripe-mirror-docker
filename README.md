@@ -13,14 +13,12 @@ By default, the WHOIS server runs on `127.0.0.8` on port `1043`, and the HTTP AP
 
 Two volumes are created - `mariadb_data` to hold the database, and `mirror_data` to hold GRS imports, exports, and miscellaneous logfiles.
 
-The database import will run at midnight, if you want to run it immediately you can do:
+The database import will run at midnight, if you want to run it immediately you can download jmxterm to /app, rebuild the container and do:
 ```
 docker exec -it ripe_mirror_mirror_1 bash
 $ java -jar ./jmxterm-1.0.1-uber.jar
 > open <pid>
-> bean net.ripe.db.whois:name=GrsImport
-> run grsImport "RIPE-GRS" "test"
-#calling operation grsImport of mbean net.ripe.db.whois:name=GrsImport
-#operation returns:
-GRS import started
+> bean net.ripe.db.whois:name=DailyScheduler
+> run runDailyScheduledTasks
+#calling operation runDailyScheduledTasks of mbean net.ripe.db.whois:name=DailyScheduler with params []
 ```
